@@ -48,6 +48,18 @@ class UsersController < ApplicationController
     end
     #render json: [mensaje: "error", parametro: params[:id]]
   end
+  
+  # enviarmail /users/mail/
+  def mail
+    
+    if params[:correo]!=""
+      UserNotifierMailer.send_signup_email(params[:correo]).deliver
+      render json: [mensaje: "se envio el correo"] 
+    else
+      render json: [mensaje: "error"] 
+    end
+      #render json: [mensaje: "error", parametro: params[:id]]
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
