@@ -49,13 +49,13 @@ Rails.application.configure do
   
 
 config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
+    address: "smtp.live.com",
     port: 587,
-    domain: "gmail.com",
+    domain: "live.com",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: "backinblack83@gmail.com",
-    password: "slash123"
+    user_name: "backinblack_83@hotmail.com",
+    password: "malcom"
 }
   
   

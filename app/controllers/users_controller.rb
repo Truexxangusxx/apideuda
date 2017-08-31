@@ -53,10 +53,14 @@ class UsersController < ApplicationController
   def mail
     
     if params[:correo]!=""
-      UserNotifierMailer.send_signup_email(params[:correo]).deliver
-      render json: [mensaje: "se envio el correo"] 
+      if User.where(correo: params[:correo]).count>0
+        UserNotifierMailer.send_signup_email(params[:correo],User.where(correo: params[:correo]).first.password).deliver
+        render json: [mensaje: "se envio el correo"]
+      else
+        render json: [mensaje: "error"] 
+      end
     else
-      render json: [mensaje: "error"] 
+      render json: [mensaje: "Debe ingresar un correo valido"] 
     end
       #render json: [mensaje: "error", parametro: params[:id]]
   end

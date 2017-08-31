@@ -79,15 +79,15 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
 config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
+    address: "smtp.live.com",
     port: 587,
-    domain: "gmail.com",
+    domain: "live.com",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: "backinblack83@gmail.com",
-    password: "slash123"
+    user_name: "backinblack_83@hotmail.com",
+    password: "malcom"
 }
   
-
+config.secret_key_base = "f1fcf4200e04024d7f213d8e5d31ef68b38c1ff31af37a9a3c18ca37f48eca7199c9a36c52066db65d88ce3586c263b892a84f848fa87615560bd6a0a6bae957"
   
 end
