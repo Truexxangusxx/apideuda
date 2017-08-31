@@ -54,10 +54,11 @@ class UsersController < ApplicationController
     
     if params[:correo]!=""
       if User.where(correo: params[:correo]).count>0
-        UserNotifierMailer.send_signup_email(params[:correo],User.where(correo: params[:correo]).first.password).deliver
+        @user=User.where(correo: params[:correo]).first
+        UserNotifierMailer.send_signup_email(params[:correo], @user.password).deliver
         render json: [mensaje: "se envio el correo"]
       else
-        render json: [mensaje: "error"] 
+        render json: [mensaje: "El correo no esta registrado"] 
       end
     else
       render json: [mensaje: "Debe ingresar un correo valido"] 
